@@ -1,13 +1,16 @@
 import * as React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
+import { TextInput } from "react-native-paper";
+import { Button } from "react-native-paper";
 
-export default function SignUpScreen() {
+export default function SignUpScreen({ onSignin }) {
   const { isLoaded, signUp, setActive } = useSignUp();
 
   const [emailAddress, setEmailAddress] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [pendingVerification, setPendingVerification] = React.useState(false);
+  const [error, setError] = React.useState("");
   const [code, setCode] = React.useState("");
 
   // start the sign up process.
@@ -28,7 +31,7 @@ export default function SignUpScreen() {
       // change the UI to our pending section.
       setPendingVerification(true);
     } catch (err) {
-      console.error(JSON.stringify(err, null, 2));
+      setError(JSON.stringify(err.errors[0].message));
     }
   };
 
@@ -50,11 +53,23 @@ export default function SignUpScreen() {
   };
 
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        paddingBottom: 100,
+      }}
+    >
+      <Text>{error}</Text>
+      <Text style={{ fontSize: 50, marginBottom: 20, fontWeight: 500 }}>
+        Sign up
+      </Text>
       {!pendingVerification && (
         <View>
           <View>
             <TextInput
+              mode="outlined"
               autoCapitalize="none"
               value={emailAddress}
               placeholder="Email..."
@@ -64,33 +79,60 @@ export default function SignUpScreen() {
 
           <View>
             <TextInput
+              style={{ width: 320 }}
+              mode="outlined"
               value={password}
               placeholder="Password..."
-              placeholderTextColor="#000"
               secureTextEntry={true}
               onChangeText={(password) => setPassword(password)}
             />
           </View>
 
-          <TouchableOpacity onPress={onSignUpPress}>
-            <Text>Sign up</Text>
-          </TouchableOpacity>
+          <Button
+            mode="contained"
+            onPress={onSignUpPress}
+            style={{
+              height: 42,
+              borderRadius: 5,
+              marginTop: 40,
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 15, fontWeight: 500 }}>Sign up</Text>
+          </Button>
+
+          <View
+            style={{
+              height: 1,
+              width: 317,
+              backgroundColor: "lightgrey",
+              marginTop: 35,
+            }}
+          />
         </View>
       )}
+
       {pendingVerification && (
         <View>
           <View>
             <TextInput
+              style={{ width: 200 }}
+              mode="outlined"
               value={code}
               placeholder="Code..."
               onChangeText={(code) => setCode(code)}
             />
           </View>
-          <TouchableOpacity onPress={onPressVerify}>
+          <Button onPress={onPressVerify}>
             <Text>Verify Email</Text>
-          </TouchableOpacity>
+          </Button>
         </View>
       )}
+      <Button onPress={onSignin} style={{ marginTop: 45 }}>
+        <Text style={{ fontSize: 16, fontWeight: 500 }}>
+          Already have a account? Sign in
+        </Text>
+      </Button>
     </View>
   );
 }

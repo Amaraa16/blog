@@ -10,13 +10,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SettingScreen } from "./components/SettingScreem";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { ProfileScreen } from "./components/ProfileScreen";
-import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
-import { View } from "react-native";
-import SignUpScreen from "./components/SignupScreen";
-import SigninScreen from "./components/SigninScreen";
+import { ClerkProvider, SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
+import { View, Text } from "react-native";
+import { Loginflow } from "./components/Loginflow";
 
 const CLERK_PUBLISHABLE_KEY =
-  "pk_test_c2Vuc2libGUtcG9zc3VtLTM4LmNsZXJrLmFjY291bnRzLmRldiQ";
+  "pk_test_YW1hemluZy1hc3AtNTguY2xlcmsuYWNjb3VudHMuZGV2JA";
 
 export default function App() {
   return (
@@ -31,7 +30,7 @@ export default function App() {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <SigninScreen />
+            <Loginflow />
           </View>
         </SignedOut>
       </PaperProvider>

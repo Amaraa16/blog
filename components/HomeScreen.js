@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import { Card } from "react-native-paper";
+import { Button, Card } from "react-native-paper";
 
 export function HomeScreen({ navigation }) {
   const [articles, setArticles] = useState([]);
