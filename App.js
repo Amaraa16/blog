@@ -65,6 +65,7 @@ function MyStack() {
       />
       <Stack.Screen name="Detail" component={DetailScreen} />
       <Stack.Screen name="Comments" component={CommentScreen} />
+      <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }
@@ -75,7 +76,6 @@ function MyDrawer() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );
 }

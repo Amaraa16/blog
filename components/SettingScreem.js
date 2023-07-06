@@ -2,11 +2,36 @@ import { View, Text } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
 import { Button } from "react-native-paper";
 
-export function SettingScreen() {
+export function SettingScreen({ navigation }) {
   return (
-    <View>
-      <Text></Text>
-      <SignoutScreen />
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        paddingTop: 30,
+        gap: 10,
+      }}
+    >
+      <View
+        style={{
+          width: 360,
+          height: 500,
+          backgroundColor: "white",
+          borderRadius: 10,
+          paddingBottom: 10,
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          onPress={() => navigation.navigate("Profile")}
+          style={{
+            marginTop: 20,
+          }}
+        >
+          My Profile
+        </Button>
+        <SignoutScreen />
+      </View>
     </View>
   );
 }

@@ -9,6 +9,9 @@ export default function SignUpScreen({ onSignin }) {
 
   const [emailAddress, setEmailAddress] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [username, setUsername] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
   const [pendingVerification, setPendingVerification] = React.useState(false);
   const [error, setError] = React.useState("");
   const [code, setCode] = React.useState("");
@@ -23,6 +26,9 @@ export default function SignUpScreen({ onSignin }) {
       await signUp.create({
         emailAddress,
         password,
+        username,
+        firstName,
+        lastName,
       });
 
       // send the email.
@@ -88,6 +94,36 @@ export default function SignUpScreen({ onSignin }) {
             />
           </View>
 
+          <View>
+            <TextInput
+              style={{ width: 320 }}
+              mode="outlined"
+              value={username}
+              placeholder="Username..."
+              onChangeText={(username) => setUsername(username)}
+            />
+          </View>
+
+          <View>
+            <TextInput
+              style={{ width: 320 }}
+              mode="outlined"
+              value={firstName}
+              placeholder="firstname..."
+              onChangeText={(firstName) => setFirstName(firstName)}
+            />
+          </View>
+
+          <View>
+            <TextInput
+              style={{ width: 320 }}
+              mode="outlined"
+              value={lastName}
+              placeholder="lastname..."
+              onChangeText={(lastName) => setLastName(lastName)}
+            />
+          </View>
+
           <Button
             mode="contained"
             onPress={onSignUpPress}
@@ -100,7 +136,6 @@ export default function SignUpScreen({ onSignin }) {
           >
             <Text style={{ fontSize: 15, fontWeight: 500 }}>Sign up</Text>
           </Button>
-
           <View
             style={{
               height: 1,

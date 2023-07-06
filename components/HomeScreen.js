@@ -2,8 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { Button, Card } from "react-native-paper";
+import { useUser } from "@clerk/clerk-expo";
 
 export function HomeScreen({ navigation }) {
+  const { user } = useUser();
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -17,7 +19,10 @@ export function HomeScreen({ navigation }) {
   return (
     <ScrollView>
       <View style={{ gap: 10, marginTop: 20 }}>
-        {articles.map((el, i) => {
+        <Text style={{ fontSize: 23, marginLeft: 10, fontWeight: 500 }}>
+          greeetings {user?.firstName}
+        </Text>
+        {articles.map((el, _) => {
           return (
             <Card
               onPress={() =>
