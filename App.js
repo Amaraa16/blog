@@ -11,7 +11,7 @@ import { SettingScreen } from "./components/SettingScreem";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { ProfileScreen } from "./components/ProfileScreen";
 import { ClerkProvider, SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Loginflow } from "./components/Loginflow";
 
 const CLERK_PUBLISHABLE_KEY =

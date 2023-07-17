@@ -67,7 +67,7 @@ export default function SignUpScreen({ onSignin }) {
         paddingBottom: 100,
       }}
     >
-      <Text>{error}</Text>
+      <Text style={{ color: "red" }}>{error}</Text>
       <Text style={{ fontSize: 50, marginBottom: 20, fontWeight: 500 }}>
         Sign up
       </Text>
@@ -78,7 +78,7 @@ export default function SignUpScreen({ onSignin }) {
               mode="outlined"
               autoCapitalize="none"
               value={emailAddress}
-              placeholder="Email..."
+              placeholder="email..."
               onChangeText={(email) => setEmailAddress(email)}
             />
           </View>
@@ -88,7 +88,7 @@ export default function SignUpScreen({ onSignin }) {
               style={{ width: 320 }}
               mode="outlined"
               value={password}
-              placeholder="Password..."
+              placeholder="password..."
               secureTextEntry={true}
               onChangeText={(password) => setPassword(password)}
             />
@@ -99,7 +99,7 @@ export default function SignUpScreen({ onSignin }) {
               style={{ width: 320 }}
               mode="outlined"
               value={username}
-              placeholder="Username..."
+              placeholder="username..."
               onChangeText={(username) => setUsername(username)}
             />
           </View>

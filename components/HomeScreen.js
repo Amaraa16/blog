@@ -20,7 +20,7 @@ export function HomeScreen({ navigation }) {
     <ScrollView>
       <View style={{ gap: 10, marginTop: 20 }}>
         <Text style={{ fontSize: 23, marginLeft: 10, fontWeight: 500 }}>
-          greeetings {user?.firstName}
+          greeetings {user.username}
         </Text>
         {articles.map((el, _) => {
           return (
